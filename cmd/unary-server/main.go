@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/grpc-otlp/protos"
+	pb "github.com/opentelemetry-grpc-jaeger-example/protos"
 	jaegerprpagators "go.opentelemetry.io/contrib/propagators/jaeger"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"

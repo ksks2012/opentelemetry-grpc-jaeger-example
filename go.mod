@@ -1,4 +1,4 @@
-module github.com/grpc-otlp
+module github.com/opentelemetry-grpc-jaeger-example
 
 go 1.16
 

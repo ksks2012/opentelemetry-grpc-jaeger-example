@@ -61,9 +61,8 @@ func main() {
 			log.Printf("Error shutting down tracer provider: %v", err)
 		}
 	}()
-	// Set jaeger propagators
-	jaeger := jaegerprpagators.Jaeger{}
-	otel.SetTextMapPropagator(jaeger)
+	// Config progator with Jaeger
+	progatorsOption := otelgrpc.WithPropagators(jaegerprpagators.Jaeger{})
 
 	// Create the server.
 	lis, err := net.Listen("tcp", ":50051")
@@ -71,8 +70,8 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	server := grpc.NewServer(
-		grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
-		grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
+		grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor(progatorsOption)),
+		grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor(progatorsOption)),
 	)
 	pb.RegisterGreeterServer(server, &GreeterServer{})
 	if err := server.Serve(lis); err != nil {

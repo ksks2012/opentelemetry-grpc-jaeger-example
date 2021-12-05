@@ -12,6 +12,7 @@ require (
 	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.2.0 // indirect
 	go.opentelemetry.io/otel/metric v0.20.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.2.0 // indirect
+	go.opentelemetry.io/otel/trace v1.2.0 // indirect
 	google.golang.org/grpc v1.42.0 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 )
